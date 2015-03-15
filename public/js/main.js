@@ -30,10 +30,14 @@ $(function() {
     query.find({
         success: function(results) {
             event = results[0];
+
+            if (!event) return
+
             Globals.event = event;
             Globals.eventName = event.get('name');
             Globals.eventDesc = event.get('description');
             Globals.eventPayment = event.get('amountPer');
+
 
             UI.loading.hide();
             UI.container.show();
@@ -44,7 +48,8 @@ $(function() {
             UI.desc = $('#event_desc').text(Globals.eventDesc)
 
             UI.button.click(function() {
-                alert('test')
+                UI.loading.show();
+                UI.container.hide();
             });
 
         },

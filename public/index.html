@@ -9,6 +9,38 @@
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1582586055329685',
+                xfbml      : true,
+                version    : 'v2.1'
+            });
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    Globals.payerId = response.authResponse.userID;
+                }
+                else {
+                    FB.login();
+                }
+            });
+
+            FB.Event.subscribe('auth.login', function(r)
+                {
+                Globals.payerId = r.authResponse.userID;
+                }
+            );
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <script src="js/main.js"></script>
 </head>
 
