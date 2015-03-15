@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>PSix - Facebook Event Payments</title>
+    <link href="css/reset.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
     <link href="css/main.css" media="all" rel="stylesheet" type="text/css"/>
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
@@ -11,6 +13,31 @@
 </head>
 
 <body>
+
+<nav class="navbar navbar-default navbar-psix">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="/images/logo.png">
+                <a class="navbar-brand psix-brand" href="#">PSix - Facebook Event Payments</a>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="container">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="payment">Amount $</label>
+                    <input type="number" class="form-control" id="payment">
+                </div>
+                <button type="submit" class="btn btn-success">Pay</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 

@@ -1,0 +1,21 @@
+.navbar-psix {
+    background-color: #3B5998;
+    border-radius: 0;
+    border: 0;
+}
+
+.psix-brand {
+    color: white !important;
+}
+
+body {
+    background-color: #96A6CE;
+}
+
+.container {
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+}
