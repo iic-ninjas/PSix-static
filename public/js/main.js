@@ -22,9 +22,11 @@ $(function() {
     Globals.userId = getUrlParameter('u');
 
     UI.loading = $('.loading');
-    UI.container = $('.container').hide();
+    UI.container = $('.container1').hide();
+    UI.container2 = $('.container2').hide();
 
     var Event = Parse.Object.extend("Event");
+    var Payment = Parse.Object.extend("Payment");
     var query = new Parse.Query(Event);
     query.equalTo("fbId", Globals.eventId);
     query.find({
@@ -47,10 +49,27 @@ $(function() {
             UI.name = $('#event_name').text(Globals.eventName)
             UI.desc = $('#event_desc').text(Globals.eventDesc)
 
-            UI.button.click(function() {
+            UI.button.click(function(e) {
+                e.preventDefault();
                 UI.loading.show();
                 UI.container.hide();
+
+                var pay = new Payment();
+                pay.set('event', Globals.event);
+                pay.set('amount', parseInt(UI.field.val()));
+                pay.set('userFbId', Globals.payerId);
+                pay.save(null, {
+                    success: function() {
+                        UI.loading.hide();
+                        UI.container2.show();
+                    },
+                    error: function(gameScore, error) {
+                      // do nothing.
+                    }
+                });
             });
+
+
 
         },
         error: function(error) {
