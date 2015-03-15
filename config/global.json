@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "PSix": {
+            "applicationId": "3VYFRciY4tMgYwEwVYq2veNGbqq7CjJvQUp85IAo", 
+            "masterKey": "nVBXDUUPHAEWjGaLjYsg0wCttUafReFMrBmJ55mA"
+        }, 
+        "_default": {
+            "link": "PSix"
+        }
+    }
+}
