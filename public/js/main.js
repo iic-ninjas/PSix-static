@@ -17,19 +17,36 @@ $(function() {
     Parse.initialize("3VYFRciY4tMgYwEwVYq2veNGbqq7CjJvQUp85IAo", "d9JmmEd28tBUnAe1bXIM5KacnUaEmxtIVhnowxsw");
 
     Globals = {}
+    UI = {}
     Globals.eventId = getUrlParameter('e');
     Globals.userId = getUrlParameter('u');
+
+    UI.loading = $('.loading');
+    UI.container = $('.container').hide();
 
     var Event = Parse.Object.extend("Event");
     var query = new Parse.Query(Event);
     query.equalTo("fbId", Globals.eventId);
     query.find({
         success: function(results) {
-            event = results[0]
-            Globals.event = event
-            Globals.eventName = event.get('name')
-            Globals.eventDesc = event.get('description')
-            Globals.eventPayment = event.get('amountPer')
+            event = results[0];
+            Globals.event = event;
+            Globals.eventName = event.get('name');
+            Globals.eventDesc = event.get('description');
+            Globals.eventPayment = event.get('amountPer');
+
+            UI.loading.hide();
+            UI.container.show();
+
+            UI.button = $('.btn')
+            UI.field = $('#payment').val(Globals.eventPayment)
+            UI.name = $('#event_name').text(Globals.eventName)
+            UI.desc = $('#event_desc').text(Globals.eventDesc)
+
+            UI.button.click(function() {
+                alert('test')
+            });
+
         },
         error: function(error) {
             // do nothing.
